@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RestSharp;
 
 namespace BusBoard1
@@ -7,7 +8,8 @@ namespace BusBoard1
     {
         static void Main(string[] args)
         {
-            Comms.PromptUserChoice();
+            string busStopCode = Comms.PromptUserChoice();
+            List<string> nextBusses = TflApi.GetBusTimes(busStopCode, 5);
         }
     }
 }
