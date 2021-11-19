@@ -8,6 +8,8 @@ namespace BusBoard1
     {
         static void Main(string[] args)
         {
+            //Bus stop code: 490008660N
+            
             string busStopCode = Comms.PromptUserChoice();
             List<string> nextBusses = TflApi.GetBusTimes(busStopCode, 5);
         }
