@@ -12,6 +12,7 @@ namespace BusBoard1
             
             string busStopCode = Comms.PromptUserChoice();
             List<string> nextBuses = TflApi.GetBusTimes(busStopCode, 5);
+            var postCode = PostCodeApi.GetLongLatFromPostCodeApi("SW1A 1AA");
         }
     }
 }

@@ -6,13 +6,6 @@ namespace BusBoard1
     {
         public int TimeToStation { get; set; }
         public string DestinationName { get; set; }
-        public string LineName { get; set; } 
-        
-        // public Bus(int timeToStation, string destinationName, string lineName)
-        // {
-        //     TimeToStation = timeToStation;
-        //     DestinationName = destinationName;
-        //     LineName = lineName;
-        // }
+        public string LineName { get; set; }
     }
 }
