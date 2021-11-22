@@ -13,41 +13,30 @@ namespace BusBoard1
     public class TflApi
     {
 
-
         public static List<string> GetBusTimes(string busStopCode, int nBusses)
         {
             List<string> nextBuses = new List<string>();
-
-
+            
             var busList = GetBusTimesJsonFromTflApi(busStopCode);
             PrintBusTimes(busList, nBusses);
-
-            //Console.WriteLine(jsonResponse);
-
-            //DeserializeJson(jsonResponse);
 
             return nextBuses;
         }
 
-        public static List<Bus> GetBusTimesJsonFromTflApi(string busStopCode)
+        private static List<Bus> GetBusTimesJsonFromTflApi(string busStopCode)
         {
-            var Client = new RestClient("https://api.tfl.gov.uk/");
+            var client = new RestClient("https://api.tfl.gov.uk/");
             var request = new RestRequest($"StopPoint/{busStopCode}/Arrivals", DataFormat.Json);
-            var response = Client.Execute<List<Bus>>(request).Data;
-            //Console.WriteLine(response);
-            
-            
+            var response = client.Execute<List<Bus>>(request).Data;
+
             return response;
         }
 
-        public static void PrintBusTimes(List<Bus> busList, int nBusses)
+        private static void PrintBusTimes(List<Bus> busList, int nBusses)
         {
 
             List<Bus> sorted = busList.OrderBy(b => b.TimeToStation).ToList();
             var nSorted = sorted.Take(nBusses);
-            
-            
-            
             
             foreach (var bus in nSorted)
             {
