@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Dynamic;
 using System.Text.Json.Serialization;
 using System.Linq;
+using BusBoard1.Models;
 
 namespace BusBoard1
 
@@ -44,6 +45,11 @@ namespace BusBoard1
                     $"Bus route {bus.LineName} to {bus.DestinationName} will arrive in {bus.TimeToStation / 60} minutes");
                 
             }
+        }
+
+        public List<string> GetBusStopCodeFromLongLat(LongLat longLatObject)
+        {
+            return new List<string>();
         }
         
        

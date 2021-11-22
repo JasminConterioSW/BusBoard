@@ -8,7 +8,7 @@ namespace BusBoard1
 {
     public class PostCodeApi
     {
-        public PostCode GetLongLatFromPostCodeApi(string postCode)
+        public LongLat GetLongLatFromPostCodeApi(string postCode)
         {
             var client = new RestClient("http://api.postcodes.io/");
             var request = new RestRequest($"postcodes/{postCode}", DataFormat.Json);

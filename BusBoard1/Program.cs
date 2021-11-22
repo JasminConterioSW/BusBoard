@@ -10,15 +10,28 @@ namespace BusBoard1
         {
             //Bus stop code: 490008660N
             
-            string busStopCode = Comms.PromptUserChoice();
+            string postcode = Comms.PromptUserChoice();
+            
+            var postcodeApi = new PostCodeApi();
+            var longLatObject = postcodeApi.GetLongLatFromPostCodeApi("SW1A 1AA");
+            
+
+            string buStopCode = "490008660N";
 
             var tflApi = new TflApi();
-            List<string> nextBuses = tflApi.GetBusTimes(busStopCode, 5);
+            List<string> busStopCodes = tflApi.GetBusStopCodeFromLongLat(longLatObject);
 
-            var postcodeApi = new PostCodeApi();
-            var postCode = postcodeApi.GetLongLatFromPostCodeApi("SW1A 1AA");
+            foreach (var busStopCode in busStopCodes)
+            {
+                List<string> nextBuses = tflApi.GetBusTimes(busStopCode, 5);
+            }
+                
+
             
-            Console.Write($"{postCode.Latitude}");
+            
+            
+            
+            Console.Write($"{longLatObject.Latitude}");
         }
     }
 }

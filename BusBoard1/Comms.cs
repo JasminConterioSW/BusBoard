@@ -6,9 +6,9 @@ namespace BusBoard1
     {
         public static string PromptUserChoice()
         {
-            Console.WriteLine("Please input a bus stop code");
+            Console.WriteLine("Please input a Postcode");
   //              var choice = Console.ReadLine();
-                var choice = "490008660N";
+                var choice = "SW1A1AA";
                 Console.WriteLine(choice);
                 return choice;
         }

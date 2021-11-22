@@ -2,6 +2,6 @@
 {
     public class PostcodeResponse
     {
-        public PostCode Result { get; set; }
+        public LongLat Result { get; set; }
     }
 }
