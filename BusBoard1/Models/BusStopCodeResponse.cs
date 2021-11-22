@@ -1,9 +1,9 @@
-﻿namespace BusBoard1.Models
+﻿using System.Collections.Generic;
+
+namespace BusBoard1.Models
 {
     public class BusStopCodeResponse
     {
-        
-        
-        public string busStopCode { get; set; }
+        public List<stopPoint> StopPoints { get; set; }
     }
 }

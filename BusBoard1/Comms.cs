@@ -8,7 +8,7 @@ namespace BusBoard1
         {
             Console.WriteLine("Please input a Postcode");
   //              var choice = Console.ReadLine();
-                var choice = "SW1A1AA";
+                var choice = "NW51TL";
                 Console.WriteLine(choice);
                 return choice;
         }

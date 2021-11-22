@@ -13,7 +13,7 @@ namespace BusBoard1
             string postcode = Comms.PromptUserChoice();
             
             var postcodeApi = new PostCodeApi();
-            var longLatObject = postcodeApi.GetLongLatFromPostCodeApi("SW1A 1AA");
+            var longLatObject = postcodeApi.GetLongLatFromPostCodeApi(postcode);
             
 
             string buStopCode = "490008660N";
@@ -25,10 +25,6 @@ namespace BusBoard1
             {
                 List<string> nextBuses = tflApi.GetBusTimes(busStopCode, 5);
             }
-                
-
-            
-            
             
             
             Console.Write($"{longLatObject.Latitude}");
