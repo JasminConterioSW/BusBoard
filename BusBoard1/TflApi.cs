@@ -49,9 +49,33 @@ namespace BusBoard1
 
         public List<string> GetBusStopCodeFromLongLat(LongLat longLatObject)
         {
-            return new List<string>();
+
+            var latitude = longLatObject.Latitude;
+            var longitude = longLatObject.Longitude;
+            
+
+            List<string> busStopCodes = GetBusStopCodes(latitude, longitude);
+            
+            return busStopCodes;
         }
-        
+
+        private List<string> GetBusStopCodes(string latitude, string longitude)
+        {
+
+            List<string> busStopCodes = new List<string>();
+            
+            var client = new RestClient("https://api.tfl.gov.uk/");
+            var request = new RestRequest($"StopPoint/?lat=${latitude}&lon=${longitude}&stopTypes=NaptanPublicBusCoachTram", DataFormat.Json);
+            var response = client.Execute<List<BusStopCodeResponse>>(request).Data;
+
+            foreach (var b in response)
+            {
+                Console.WriteLine(b.busStopCode);
+                busStopCodes.Add(b.busStopCode);
+            }
+            
+            return busStopCodes;
+        }
        
     }
 }
