@@ -19,7 +19,8 @@ namespace BusBoard1
             List<string> nextBuses = new List<string>();
 
 
-            var jsonResponse = GetBusTimesJsonFromTflApi(busStopCode);
+            var busList = GetBusTimesJsonFromTflApi(busStopCode);
+            PrintBusTimes(busList);
 
             //Console.WriteLine(jsonResponse);
 
@@ -35,50 +36,21 @@ namespace BusBoard1
             var response = Client.Execute<List<Bus>>(request).Data;
             //Console.WriteLine(response);
             
-            foreach (var bus in response)
-            {
-                Console.WriteLine(bus.TimeToStation);
-                Console.WriteLine(bus.DestinationName);
-                Console.WriteLine(bus.LineName);
-            }
+            
             return response;
         }
-        
-        public static void DeserializeJson(string jsonString)
+
+        public static void PrintBusTimes(List<Bus> busList)
         {
-
-            // dynamic data = JsonSerializer.Deserialize<dynamic>(jsonString);
-            // foreach (var obj in data)
-            // {
-            //     Bus bus = new Bus()
-            //     {
-            //         TimeToStation = obj.timeToStation,
-            //         LineName = obj.lineName,
-            //         DestinationName = obj.destinationName
-            //     };
-            // }
-
-
-            var newBusList =
-                JsonSerializer.Deserialize<List<Bus>>(jsonString); //this bit isn't working yet
-            //     Console.WriteLine(newBusList);
-            //     foreach (var bus in newBusList)
-            //     {
-            //         Console.WriteLine(bus.TimeToStation);
-            //     }
-            //
-            // }
-
-            //
-            //
-            //
-            // public Bus( int timeToStation, string destinationName, string lineName)
-            // {
-            //     TimeToStationInSeconds = timeToStation;
-            //     Destination = 
-            //     
-            // }
+            foreach (var bus in busList)
+            {
+                Console.WriteLine(
+                    $"Bus route {bus.LineName} to {bus.DestinationName} will arrive in {bus.TimeToStation / 60} minutes");
+                
+            }
         }
+        
+       
     }
 }
 
