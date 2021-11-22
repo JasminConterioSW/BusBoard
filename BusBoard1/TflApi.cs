@@ -63,15 +63,17 @@ namespace BusBoard1
         {
             List<string> busStopCodes = new List<string>();
             
+            //Console.WriteLine($"https://api.tfl.gov.uk/StopPoint/?lat=${latitude}&lon=${longitude}&stopTypes=NaptanPublicBusCoachTram");
+            
             var client = new RestClient("https://api.tfl.gov.uk/");
-            var request = new RestRequest($"StopPoint/?lat=${latitude}&lon=${longitude}&stopTypes=NaptanPublicBusCoachTram", DataFormat.Json);
-            var response = client.Execute<BusStopCodeResponse>(request).Data;
+            var request = new RestRequest($"StopPoint/?lat={latitude}&lon={longitude}&stopTypes=NaptanPublicBusCoachTram", DataFormat.Json);
+            var response = client.Execute<BusStopCodeResponse>(request).Data.StopPoints;
 
-            foreach (var b in response.StopPoints)
-            {
-                Console.WriteLine(b.naptanId);
-                busStopCodes.Add(b.naptanId);
-            }
+            foreach (var b in response)
+             {
+                 Console.WriteLine(b.naptanId);
+                 busStopCodes.Add(b.naptanId);
+             }
             return busStopCodes;
         }
        

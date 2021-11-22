@@ -4,6 +4,6 @@ namespace BusBoard1.Models
 {
     public class BusStopCodeResponse
     {
-        public List<stopPoint> StopPoints { get; set; }
+        public List<StopPoint> StopPoints { get; set; }
     }
 }

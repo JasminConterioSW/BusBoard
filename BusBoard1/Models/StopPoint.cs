@@ -1,6 +1,6 @@
 ﻿namespace BusBoard1.Models
 {
-    public class stopPoint
+    public class StopPoint
     {
         public string naptanId { get; set; }
     }
