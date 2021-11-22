@@ -20,7 +20,7 @@ namespace BusBoard1
 
 
             var busList = GetBusTimesJsonFromTflApi(busStopCode);
-            PrintBusTimes(busList);
+            PrintBusTimes(busList, nBusses);
 
             //Console.WriteLine(jsonResponse);
 
@@ -40,9 +40,16 @@ namespace BusBoard1
             return response;
         }
 
-        public static void PrintBusTimes(List<Bus> busList)
+        public static void PrintBusTimes(List<Bus> busList, int nBusses)
         {
-            foreach (var bus in busList)
+
+            List<Bus> sorted = busList.OrderBy(b => b.TimeToStation).ToList();
+            var nSorted = sorted.Take(nBusses);
+            
+            
+            
+            
+            foreach (var bus in nSorted)
             {
                 Console.WriteLine(
                     $"Bus route {bus.LineName} to {bus.DestinationName} will arrive in {bus.TimeToStation / 60} minutes");
