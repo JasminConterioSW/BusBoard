@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BusBoard1.Api.Apis;
+using BusBoard1.Api.Clients;
 using BusBoard1.Api.Models;
 using RestSharp;
 

@@ -1,4 +1,7 @@
-﻿namespace BusBoard1.Api.Apis
+﻿using BusBoard1.Api.Models;
+using RestSharp;
+
+namespace BusBoard1.Api.Clients
 {
     public class PostCodeApi
     {

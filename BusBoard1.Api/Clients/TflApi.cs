@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using BusBoard1.Api.Models;
+using RestSharp;
 
-namespace BusBoard1.Api.Apis
+namespace BusBoard1.Api.Clients
 
 {
     public class TflApi
