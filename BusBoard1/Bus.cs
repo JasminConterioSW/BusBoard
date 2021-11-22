@@ -1,16 +1,18 @@
-﻿namespace BusBoard1
+﻿using System.Collections.Generic;
+
+namespace BusBoard1
 {
     public class Bus
     {
-        public int timeToStation { get; set; }
-        public string destinationName { get; set; }
-        public string lineName { get; set; } //linename
+        public int TimeToStation { get; set; }
+        public string DestinationName { get; set; }
+        public string LineName { get; set; } 
         
-        public Bus(int timeToStation, string destinationName, string lineName)
-        {
-            timeToStation = timeToStation;
-            destinationName = destinationName;
-            lineName = lineName;
-        }
+        // public Bus(int timeToStation, string destinationName, string lineName)
+        // {
+        //     TimeToStation = timeToStation;
+        //     DestinationName = destinationName;
+        //     LineName = lineName;
+        // }
     }
 }

@@ -11,7 +11,7 @@ namespace BusBoard1
             //Bus stop code: 490008660N
             
             string busStopCode = Comms.PromptUserChoice();
-            List<string> nextBusses = TflApi.GetBusTimes(busStopCode, 5);
+            List<string> nextBuses = TflApi.GetBusTimes(busStopCode, 5);
         }
     }
 }
