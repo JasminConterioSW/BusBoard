@@ -42,24 +42,24 @@ namespace BusBoard1
             foreach (var bus in nSorted)
             {
                 Console.WriteLine(
-                    $"Bus route {bus.LineName} to {bus.DestinationName} will arrive in {bus.TimeToStation / 60} minutes");
+                    $"Bus route {bus.LineName} to {bus.DestinationName} will arrive at {bus.StationName} in {bus.TimeToStation / 60} minutes ");
                 
             }
         }
 
-        public List<string> GetBusStopCodeFromLongLat(LongLat longLatObject)
+        public List<string> GetBusStopCodesFromLongLat(LongLat longLatObject, int nStops)
         {
 
             var latitude = longLatObject.Latitude;
             var longitude = longLatObject.Longitude;
-            
 
-            List<string> busStopCodes = GetBusStopCodes(latitude, longitude);
+
+            List<string> busStopCodes = GetBusStopCodes(latitude, longitude, nStops);
             
             return busStopCodes;
         }
 
-        private List<string> GetBusStopCodes(string latitude, string longitude)
+        private List<string> GetBusStopCodes(string latitude, string longitude, int nStops)
         {
             List<string> busStopCodes = new List<string>();
             
@@ -69,14 +69,16 @@ namespace BusBoard1
             var request = new RestRequest($"StopPoint/?lat={latitude}&lon={longitude}&stopTypes=NaptanPublicBusCoachTram", DataFormat.Json);
             var response = client.Execute<BusStopCodeResponse>(request).Data.StopPoints;
 
-            foreach (var b in response)
-             {
+            List<StopPoint> sorted = response.OrderBy(b => b.distance).ToList();
+            var nSorted = sorted.Take(nStops);
+            
+            foreach (var b in nSorted)
+            {
                  Console.WriteLine(b.naptanId);
                  busStopCodes.Add(b.naptanId);
-             }
+            }
             return busStopCodes;
         }
-       
     }
 }
 

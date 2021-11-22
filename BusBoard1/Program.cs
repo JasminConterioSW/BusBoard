@@ -19,7 +19,7 @@ namespace BusBoard1
             string buStopCode = "490008660N";
 
             var tflApi = new TflApi();
-            List<string> busStopCodes = tflApi.GetBusStopCodeFromLongLat(longLatObject);
+            List<string> busStopCodes = tflApi.GetBusStopCodesFromLongLat(longLatObject, 2);
 
             foreach (var busStopCode in busStopCodes)
             {
