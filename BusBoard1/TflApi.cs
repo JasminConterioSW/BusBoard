@@ -13,7 +13,7 @@ namespace BusBoard1
     public class TflApi
     {
 
-        public static List<string> GetBusTimes(string busStopCode, int nBusses)
+        public List<string> GetBusTimes(string busStopCode, int nBusses)
         {
             List<string> nextBuses = new List<string>();
             
@@ -23,7 +23,7 @@ namespace BusBoard1
             return nextBuses;
         }
 
-        private static List<Bus> GetBusses(string busStopCode)
+        private List<Bus> GetBusses(string busStopCode)
         {
             var client = new RestClient("https://api.tfl.gov.uk/");
             var request = new RestRequest($"StopPoint/{busStopCode}/Arrivals", DataFormat.Json);
@@ -32,7 +32,7 @@ namespace BusBoard1
             return response;
         }
 
-        private static void PrintBusTimes(List<Bus> busList, int nBusses)
+        private void PrintBusTimes(List<Bus> busList, int nBusses)
         {
 
             List<Bus> sorted = busList.OrderBy(b => b.TimeToStation).ToList();
