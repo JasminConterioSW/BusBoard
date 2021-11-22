@@ -15,9 +15,6 @@ namespace BusBoard1
             var postcodeApi = new PostCodeApi();
             var longLatObject = postcodeApi.GetLongLatFromPostCodeApi(postcode);
             
-
-            string buStopCode = "490008660N";
-
             var tflApi = new TflApi();
             List<string> busStopCodes = tflApi.GetBusStopCodesFromLongLat(longLatObject, 2);
 
@@ -25,9 +22,6 @@ namespace BusBoard1
             {
                 List<string> nextBuses = tflApi.GetBusTimes(busStopCode, 5);
             }
-            
-            
-            Console.Write($"{longLatObject.Latitude}");
         }
     }
 }
