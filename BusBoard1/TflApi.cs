@@ -17,13 +17,13 @@ namespace BusBoard1
         {
             List<string> nextBuses = new List<string>();
             
-            var busList = GetBusTimesJsonFromTflApi(busStopCode);
+            var busList = GetBusses(busStopCode);
             PrintBusTimes(busList, nBusses);
 
             return nextBuses;
         }
 
-        private static List<Bus> GetBusTimesJsonFromTflApi(string busStopCode)
+        private static List<Bus> GetBusses(string busStopCode)
         {
             var client = new RestClient("https://api.tfl.gov.uk/");
             var request = new RestRequest($"StopPoint/{busStopCode}/Arrivals", DataFormat.Json);
