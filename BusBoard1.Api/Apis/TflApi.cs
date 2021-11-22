@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http.Json;
-using RestSharp;
-using System.Text.Json;
-using System.Dynamic;
-using System.Text.Json.Serialization;
-using System.Linq;
-using BusBoard1.Models;
 
-namespace BusBoard1
+namespace BusBoard1.Api.Apis
 
 {
     public class TflApi

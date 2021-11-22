@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BusBoard1
+﻿namespace BusBoard1.Api.Models
 {
     public class Bus
     {

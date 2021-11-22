@@ -1,4 +1,4 @@
-﻿namespace BusBoard1.Models
+﻿namespace BusBoard1.Api.Models
 {
     public class PostcodeResponse
     {

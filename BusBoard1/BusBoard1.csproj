@@ -9,4 +9,8 @@
       <PackageReference Include="RestSharp" Version="106.13.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BusBoard1.Api\BusBoard1.Api.csproj" />
+    </ItemGroup>
+
 </Project>

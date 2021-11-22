@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json;
-using BusBoard1.Models;
-using RestSharp;
-
-namespace BusBoard1
+﻿namespace BusBoard1.Api.Apis
 {
     public class PostCodeApi
     {

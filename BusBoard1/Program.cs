@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using BusBoard1.Api.Apis;
+using BusBoard1.Api.Models;
 using RestSharp;
 
 namespace BusBoard1
@@ -13,7 +15,7 @@ namespace BusBoard1
             string postcode = Comms.PromptUserChoice();
             
             var postcodeApi = new PostCodeApi();
-            var longLatObject = postcodeApi.GetLongLatFromPostCodeApi(postcode);
+            LongLat longLatObject = postcodeApi.GetLongLatFromPostCodeApi(postcode);
             
             var tflApi = new TflApi();
             List<string> busStopCodes = tflApi.GetBusStopCodesFromLongLat(longLatObject, 2);
