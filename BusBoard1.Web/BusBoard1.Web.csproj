@@ -4,4 +4,7 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\BusBoard1.Api\BusBoard1.Api.csproj" />
+    </ItemGroup>
 </Project>

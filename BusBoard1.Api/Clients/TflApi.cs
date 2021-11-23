@@ -10,12 +10,13 @@ namespace BusBoard1.Api.Clients
     public class TflApi
     {
 
-        public List<string> GetBusTimes(string busStopCode, int nBusses)
+        public List<Bus> GetBusTimes(string busStopCode, int nBusses)
         {
             List<string> nextBuses = new List<string>();
             
             var busList = GetBusses(busStopCode);
-            PrintBusTimes(busList, nBusses);
+            var nextBuses = ReturnBusTimes(busList, nBusses);
+            //PrintBusTimes(busList, nBusses);
 
             return nextBuses;
         }
@@ -43,6 +44,16 @@ namespace BusBoard1.Api.Clients
             }
         }
 
+        private List<Bus> ReturnBusTimes(List<Bus> busList, int nBusses)
+        {
+
+            List<Bus> sorted = busList.OrderBy(b => b.TimeToStation).ToList();
+            var nSorted = sorted.Take(nBusses);
+
+            return nSorted;
+        }
+
+        
         public List<string> GetBusStopCodesFromLongLat(LongLat longLatObject, int nStops)
         {
 
