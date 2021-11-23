@@ -31,8 +31,8 @@ namespace BusBoard1.Web.Controllers
         {
             var longlat = _postCodeApi.GetLongLatFromPostCodeApi(postcode); // getlonglatfrompostcode(postcode)
             var busStopCodes = _tflApi.GetBusStopCodesFromLongLat(longlat, 2);// get bus stopcode from longlat
-            var busTimes = GetBusTimes(busStopCodes);// get bus stop times from bus stopcode
-            var buses = busTimes.Select(a => new BusViewModel(a)).ToList();   // convert bus model to view model
+            var busTimesList = _tflApi.GetBusTimes(busStopCodes, 5);// get bus stop times from bus stopcode
+            var buses = busTimesList.Select(a => new BusViewModel(a)).ToList();   // convert bus model to view model
             //    return model
             
             return View(buses);

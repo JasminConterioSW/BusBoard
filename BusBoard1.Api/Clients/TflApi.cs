@@ -15,10 +15,10 @@ namespace BusBoard1.Api.Clients
             List<string> nextBuses = new List<string>();
             
             var busList = GetBusses(busStopCode);
-            var nextBuses = ReturnBusTimes(busList, nBusses);
+            var nextBusTimes = ReturnBusTimes(busList, nBusses);
             //PrintBusTimes(busList, nBusses);
 
-            return nextBuses;
+            return nextBusTimes;
         }
 
         private List<Bus> GetBusses(string busStopCode)
@@ -48,7 +48,7 @@ namespace BusBoard1.Api.Clients
         {
 
             List<Bus> sorted = busList.OrderBy(b => b.TimeToStation).ToList();
-            var nSorted = sorted.Take(nBusses);
+            List<Bus> nSorted = sorted.Take(nBusses).ToList();
 
             return nSorted;
         }
